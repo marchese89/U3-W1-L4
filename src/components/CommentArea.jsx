@@ -1,10 +1,12 @@
 import { Component } from "react";
 import CommentList from "./CommentsList";
 import AddComment from "./AddComment";
+import Error from "./Error";
 
 class CommentArea extends Component {
   state = {
     listOfComments: [],
+    error: false,
   };
   componentDidMount() {
     this.getComments();
@@ -29,16 +31,23 @@ class CommentArea extends Component {
       }
     } catch (err) {
       console.log("ERRORE", err);
+      this.setState({ error: true });
     }
   };
   render() {
     return (
       <>
+        {this.state.error && <Error />}
         <CommentList
           listOfComments={this.state.listOfComments}
           update={this.getComments}
+          commentArea={this}
         />
-        <AddComment id={this.props.id} update={this.getComments} />
+        <AddComment
+          id={this.props.id}
+          update={this.getComments}
+          commentArea={this}
+        />
       </>
     );
   }
