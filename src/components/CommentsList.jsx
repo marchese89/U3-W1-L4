@@ -7,7 +7,13 @@ class CommentList extends Component {
       <ListGroup>
         <h4 className="text-center">Commenti</h4>
         {this.props.listOfComments.map((comment, i) => {
-          return <SingleComment comment={comment} key={i} />;
+          return (
+            <SingleComment
+              comment={comment}
+              key={i}
+              update={this.props.update}
+            />
+          );
         })}
       </ListGroup>
     );
