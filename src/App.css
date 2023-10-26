@@ -1,0 +1,15 @@
+.card-img {
+  height: 20rem;
+}
+
+.card.selected {
+  border: 2px solid red;
+}
+
+.card {
+  cursor: pointer;
+}
+
+.mb-6 {
+  margin-bottom: 5.5em;
+}
